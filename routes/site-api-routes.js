@@ -36,7 +36,7 @@ app.get("/api/posts/:id", function(req, res) {
 app.get("/api/posts/:category", function(req, res) {
   db.Site.findAll({
     where: {
-      id: req.params.category
+      category: req.params.category
     }
   }).then(function(dbSite) {
     res.json(dbSite);
@@ -46,7 +46,7 @@ app.get("/api/posts/:category", function(req, res) {
 app.get("/api/posts/:rating", function(req, res) {
   db.Site.findAll({
     where: {
-      id: req.params.rating
+      rating: req.params.rating
     }
   }).then(function(dbSite) {
     res.json(dbSite);
