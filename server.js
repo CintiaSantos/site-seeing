@@ -13,7 +13,7 @@ app.use(express.static("public"));
 
 app.get('/', function (req, res) {
     // res.send('Hello World')
-    res.render("index");
+    res.render("members");
   })
 
   app.get('/api/login', function (req, res) {

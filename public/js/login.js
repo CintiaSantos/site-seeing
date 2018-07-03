@@ -1,11 +1,11 @@
-$("document").ready(function(){
+$(document).ready(function(){
 
     $("submit").on("click", function(){
         var user =
         {
             email: $("#email-input").val().trim(),
             password: $("#password-input").val().trim()
-        },
+        };
         
         function login(email, password){
             $.post("./api/login", {

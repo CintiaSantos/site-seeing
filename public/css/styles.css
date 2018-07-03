@@ -18,3 +18,30 @@ body {
 #password-input {
     width: 200%;
 }
+
+#sites {
+    position: absolute;
+    top: 35%;
+}
+
+#addSite {
+    position: absolute;
+    top: 1%;
+}
+
+#addSiteButton {
+    position: relative;
+    left: 40%;
+}
+
+#sitesTitle {
+    text-align: center;
+}
+
+.glyphicon-remove-circle {
+    font-size: 30px;
+}
+
+li {
+    font-size: 30px;
+}
