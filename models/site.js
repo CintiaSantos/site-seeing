@@ -8,6 +8,11 @@ module.exports = function(sequelize, DataTypes) {
                 isUrl: true
             }
         },
+        category: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            default: "misc"
+        },
         description: {
             type: DataTypes.STRING,
             allowNull: false,

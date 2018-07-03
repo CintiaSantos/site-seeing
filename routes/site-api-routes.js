@@ -6,11 +6,12 @@ module.exports = function(app) {
 
 app.post("/api/sites", function(req, res) {
     console.log(req.body);
-    db.Site.(req.body).then(function(dbSite) {
+    db.Site.create(req.body).then(function(dbSite) {
       res.redirect(307, "/");
-    })
+    }).catch(function(err) {
       res.json(err);
     });
+  });
 
 app.delete("/api/posts/:id", function(req, res) {
   db.Site.destroy({
@@ -18,9 +19,11 @@ app.delete("/api/posts/:id", function(req, res) {
       id: req.params.id
     }
   }).then(function(dbSite) {
-    res.json(dbSite);
+      res.redirect(307, "/");
+    }).catch(function(err) {
+      res.json(err);
+    });
   });
-});
 
 app.get("/api/posts/:id", function(req, res) {
   db.Site.findAll({
@@ -63,3 +66,4 @@ app.get("/api/sites", function(req, res) {
 
 
 };
+
