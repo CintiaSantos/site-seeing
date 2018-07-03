@@ -7,12 +7,18 @@ var PORT = process.env.PORT || 8080;
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
 app.get('/', function (req, res) {
     // res.send('Hello World')
     res.render("index");
+  })
+
+  app.get('/api/login', function (req, res) {
+    // res.send('Hello World')
+    res.render("members");
   })
    
   app.listen(PORT, function(){
