@@ -13,12 +13,17 @@ app.use(express.static("public"));
 
 app.get('/', function (req, res) {
     // res.send('Hello World')
+    res.render("index");
+  })
+
+  app.get('/api/members', function (req, res) {
+    // res.send('Hello World')
     res.render("members");
   })
 
-  app.get('/api/login', function (req, res) {
+  app.get('/api/signup', function (req, res) {
     // res.send('Hello World')
-    res.render("members");
+    res.render("signup");
   })
    
   app.listen(PORT, function(){
