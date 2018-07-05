@@ -115,3 +115,21 @@ li {
     right: 2%;
     top: 2%;
 }
+
+#modalTitle {
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#inputSite {
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#inputSiteBox1 {
+    width: 100%;
+}
+
+#inputSiteBox2 {
+    width: 100%;
+}
