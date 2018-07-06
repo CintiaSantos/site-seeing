@@ -1,1 +1,77 @@
-<h1>Member Page</h1>
+{{!-- <div id="addSite" class="jumbotron">
+  <button id="addSiteButton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-plus"></span> Add a Site
+</button>
+</div> --}}
+
+<a id="logOut" href="/">Log Out</a>
+
+<button id="addSiteButton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-plus"></span><span id="buttonText"> Add a Site</span>
+</button>
+
+<div id="sites" class="jumbotron">
+    <h1 id="sitesTitle" class="display-4">Sites</h1>
+    <p class="lead"></p>
+    {{!-- {{#each}} --}}
+    <ul class="list-group">
+  <li class="list-group-item"><a href="http://getbootstrap.com" target="_blank">bootstrap</a> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove-circle pull-right"></span></button></li>
+  <li class="list-group-item"><a href="http://w3schools.com" target="_blank">w3schools</a> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove-circle pull-right"></span></button></li>
+  <li class="list-group-item"><a href="http://github.com" target="_blank">github</a> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove-circle pull-right"></span></button></li>
+  <li class="list-group-item"><a href="http://lipsum.com" target="_blank">lipsum</a> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove-circle pull-right"></span></button></li>
+  <li class="list-group-item"><a href="http://fonts.google.com" target="_blank">google fonts</a> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove-circle pull-right"></span></button></li>
+</ul>
+{{!-- {{/each}} --}}
+{{!-- <div class="col-md-12 text-center" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group mr-2" role="group" aria-label="First group">
+    <button type="button" class="btn btn-primary">1</button>
+    <button type="button" class="btn btn-primary">2</button>
+    <button type="button" class="btn btn-primary">3</button>
+    <button type="button" class="btn btn-primary">4</button>
+  </div>
+</div> --}}
+
+{{!-- <div class="pagination pagination-centered">
+  <ul>
+    {{#paginate pagination type="first"}}
+      <li {{#if disabled}}class="disabled"{{/if}}><a href="?p={{n}}">First</a></li>
+    {{/paginate}}
+    {{#paginate pagination type="previous"}}
+      <li {{#if disabled}}class="disabled"{{/if}}><a href="?p={{n}}">Prev</a></li>
+    {{/paginate}}
+    {{#paginate pagination type="middle" limit="7"}}
+      <li {{#if active}}class="active"{{/if}}><a href="?p={{n}}">{{n}}</a></li>
+    {{/paginate}}
+    {{#paginate pagination type="next"}}
+      <li {{#if disabled}}class="disabled"{{/if}}><a href="?p={{n}}">Next</a></li>
+    {{/paginate}}
+    {{#paginate pagination type="last"}}
+      <li {{#if disabled}}class="disabled"{{/if}}><a href="?p={{n}}">Last</a></li>
+    {{/paginate}}
+  </ul>
+</div> --}}
+
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 id="modalTitle" class="modal-title" id="exampleModalLabel">Add a Site</h5>
+        <form id="inputSite" action="/action_page.php">
+  Website Title: <input id="inputSiteBox1" type="text" name="title"><br>
+  Website URL: <input id="inputSiteBox2" type="text" name="url"><br>
+  {{!-- <input type="submit" value="Submit"> --}}
+</form> 
+        {{!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button> --}}
+      </div>
+      {{!-- <div class="modal-body">
+        
+      </div> --}}
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Add Site</button>
+      </div>
+    </div>
+  </div>
+</div>
