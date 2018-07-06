@@ -34,6 +34,15 @@ db.sequelize.sync().then(function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
 });
+
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+  app.set("view engine", "handlebars"); 
+  
+app.get('/', function (req, res) {
+  // res.send('Hello World')
+  res.render("index");
+})
+
   app.get('/api/members', function (req, res) {
     // res.send('Hello World')
     res.render("members");
