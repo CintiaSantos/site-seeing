@@ -64,6 +64,4 @@ app.get("/api/sites", function(req, res) {
 });
 
 
-
 };
-
