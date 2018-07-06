@@ -3,7 +3,9 @@ var passport = require("../config/passport");
 
 module.exports = function(app) {
     app.post("/api/login", passport.authenticate("local", { failureRedirect: '/login' }), function(req, res) {
-      
+        console.log("this works");
+        res.json("members");
+        
     });
 
     app.post("/api/signup", function(req, res) {

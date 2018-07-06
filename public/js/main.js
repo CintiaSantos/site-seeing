@@ -6,11 +6,11 @@ console.log("connected")
 //     $('#exampleModal').modal('show')
 // }
  
-exphbs.registerHelper('paginate', paginate);
+// exphbs.registerHelper('paginate', paginate);
 
-var html = template({pagination: {
-  page: 1,
-  pageCount: 1
-}});
+// var html = template({pagination: {
+//   page: 1,
+//   pageCount: 1
+// }});
 
 };
