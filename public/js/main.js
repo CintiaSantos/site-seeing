@@ -1,16 +1,9 @@
-window.onload = function(){ 
-    var btn = document.getElementById("addSiteButton");
-console.log("connected")
-//     btn.onclick = function() {
-    
-//     $('#exampleModal').modal('show')
-// }
- 
-exphbs.registerHelper('paginate', paginate);
+$(document).ready(function() {
+  $.get("/api/sites").then(function(data) {
+    $(".site-list").text(data.title);
+  });
+});
 
-var html = template({pagination: {
-  page: 1,
-  pageCount: 1
-}});
 
-};
+
+

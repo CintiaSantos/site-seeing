@@ -1,5 +1,10 @@
 module.exports = function(sequelize, DataTypes) {
     var Site = sequelize.define("Site", {
+        title: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            unique: true
+        },
         url: {
             type: DataTypes.STRING,
             allowNull: false,

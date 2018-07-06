@@ -10,7 +10,8 @@ module.exports = function(app) {
       });
     });
 
-  app.delete("/api/posts/:id", function(req, res) {
+  // --------------- sorted query --------------------
+  app.delete("/api/sites/:id", function(req, res) {
     db.Site.destroy({
       where: {
         id: req.params.id
@@ -22,7 +23,7 @@ module.exports = function(app) {
       });
     });
 
-  app.get("/api/posts/:id", function(req, res) {
+  app.get("/api/sites/:id", function(req, res) {
     db.Site.findAll({
       where: {
         id: req.params.id
@@ -33,7 +34,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/posts/:category", function(req, res) {
+  app.get("/api/sites/:category", function(req, res) {
     db.Site.findAll({
       where: {
         category: req.params.category
@@ -43,7 +44,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/posts/:rating", function(req, res) {
+  app.get("/api/sites/:rating", function(req, res) {
     db.Site.findAll({
       where: {
         rating: req.params.rating
@@ -52,7 +53,8 @@ module.exports = function(app) {
       res.json(dbSite);
     });
   });
-
+  // --------------- end sorted query --------------------
+  
   app.get("/api/sites", function(req, res) {
       db.Site.findAll({})
       .then(function(dbSite) {
