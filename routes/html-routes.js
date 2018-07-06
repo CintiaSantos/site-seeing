@@ -2,15 +2,12 @@
 // html-routes.js - this file offers a set of routes for sending users to the various html pages
 // **********************************************************************************************
 
-// Dependencies
-// =============================================================
-var path = require("path");
-
 // Routes
 // =============================================================
 module.exports = function(app) {
   
     app.get("/", function(req, res) {
+      // if user is authenticated, redirect to main page, else render login/signup
       if (req.user) {
         res.redirect("/members");
       }
@@ -23,7 +20,12 @@ module.exports = function(app) {
       }
     });
 
-    app.get('/members', isAuthenticated, function (req, res) {
+    app.get("/signup", function(req, res) {
+      res.render("signup");
+    });
+
+    // If user is authenticated, render members/main page
+    app.get("/members", isAuthenticated, function (req, res) {
       res.render("members");
     });
   
