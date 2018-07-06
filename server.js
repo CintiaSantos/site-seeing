@@ -2,7 +2,7 @@
 // =============================================================
 var express = require("express");
 var bodyParser = require("body-parser");
-// var session = require("express-session");
+var session = require("express-session");
 var passport = require("./config/passport");
 
 var exphbs = require("express-handlebars");
