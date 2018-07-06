@@ -3,7 +3,7 @@ var passport = require("../config/passport");
 
 module.exports = function(app) {
     app.post("/api/login", passport.authenticate("local", { failureRedirect: '/login' }), function(req, res) {
-      
+      res.json("/members");
     });
 
     app.post("/api/signup", function(req, res) {
@@ -25,6 +25,8 @@ module.exports = function(app) {
         res.redirect("/");
     });
 
+    // ---------------------------------------------------
+
     app.get("/api/users", function(req, res) {
         db.User.findAll({
             include: [db.Site]
@@ -33,6 +35,25 @@ module.exports = function(app) {
         });
     });
 
+    app.get("/api/users/:id", function(req, res) {
+        db.User.findOne({
+            where: {
+                id: req.params.id
+            },
+            include: [db.User]
+        }).then(function(dbUser) {
+            res.json(dbUser);
+        });
+    });
 
+    app.delete("/api/users/:id", function(req, res) {
+        db.User.destroy({
+            where: {
+                id: req.params.id
+            },
+        }).then(function(dbUser) {
+            res.json(dbUser);
+        });
+    });
 
 };

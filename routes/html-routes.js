@@ -9,31 +9,22 @@ var path = require("path");
 // Routes
 // =============================================================
 module.exports = function(app) {
-
-    // Each of the below routes just handles the HTML page that the user gets sent to.
   
-    // index route loads view.html
     app.get("/", function(req, res) {
-      
-      res.render("index");
+      if (req.user) {
+        res.redirect("/members");
+      }
+      res.render("signup");
     });
   
-    // cms route loads cms.html
-    app.get('/api/members', function (req, res) {
-      // res.send('Hello World')
-      res.render("members");
-    })
-  
-    // blog route loads blog.html
-    app.get('/api/signup', function (req, res) {
-      // res.send('Hello World')
-      res.render("signup");
-    })
-  
-    // authors route loads author-manager.html
-    // app.get("/authors", function(req, res) {
-      
+    api.get("/login", function(req, res) {
+      if (req.user) {
+        res.render("members");
+      }
+    });
 
-    // });
+    app.get('/members', isAuthenticated, function (req, res) {
+      res.render("members");
+    });
   
   };
