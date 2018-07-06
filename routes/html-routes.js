@@ -15,25 +15,25 @@ module.exports = function(app) {
     // index route loads view.html
     app.get("/", function(req, res) {
       
-        
+      res.render("index");
     });
   
     // cms route loads cms.html
-    app.get("/cms", function(req, res) {
-      
-
-    });
+    app.get('/api/members', function (req, res) {
+      // res.send('Hello World')
+      res.render("members");
+    })
   
     // blog route loads blog.html
-    app.get("/blog", function(req, res) {
-      
-
-    });
+    app.get('/api/signup', function (req, res) {
+      // res.send('Hello World')
+      res.render("signup");
+    })
   
     // authors route loads author-manager.html
-    app.get("/authors", function(req, res) {
+    // app.get("/authors", function(req, res) {
       
 
-    });
+    // });
   
   };

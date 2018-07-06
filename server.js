@@ -16,7 +16,7 @@ var db = require("./models");
 // Sets up the Express App
 // =============================================================
 var app = express();
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.static("public"));
 app.use(session({ secret: "keyboard cat", resave: true, saveUninitialized: true }));
@@ -29,30 +29,33 @@ require("./routes/site-api-routes.js")(app);
 require("./routes/user-api-routes.js")(app);
 require("./routes/html-routes.js")(app);
 
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+  app.set("view engine", "handlebars");
+
 db.sequelize.sync().then(function() {
   app.listen(PORT, function() {
     console.log("==> 🌎  Listening on port %s. Visit http://localhost:%s/ in your browser.", PORT, PORT);
   });
+
 });
 
-app.engine("handlebars", exphbs({ defaultLayout: "main" }));
-  app.set("view engine", "handlebars"); 
+ 
   
-app.get('/', function (req, res) {
-  // res.send('Hello World')
-  res.render("index");
-})
+// app.get('/', function (req, res) {
+//   // res.send('Hello World')
+//   res.render("index");
+// })
 
-  app.get('/api/members', function (req, res) {
-    // res.send('Hello World')
-    res.render("members");
-  })
+  // app.get('/api/members', function (req, res) {
+  //   // res.send('Hello World')
+  //   res.render("members");
+  // })
 
-  app.get('/api/signup', function (req, res) {
-    // res.send('Hello World')
-    res.render("signup");
-  })
+  // app.get('/api/signup', function (req, res) {
+  //   // res.send('Hello World')
+  //   res.render("signup");
+  // })
    
-  app.listen(PORT, function(){
-      console.log("listening at " + PORT);
-  })
+  // app.listen(PORT, function(){
+  //     console.log("listening at " + PORT);
+  // })
