@@ -2,6 +2,8 @@
 // html-routes.js - this file offers a set of routes for sending users to the various html pages
 // **********************************************************************************************
 
+var isAuthenticated = require("../config/middleware/isAuthenticated");
+
 // Routes
 // =============================================================
 module.exports = function(app) {
