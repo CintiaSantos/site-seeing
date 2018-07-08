@@ -4,16 +4,28 @@ var db = require("../models");
 module.exports = function(app) {
 
 
-app.post("/api/sites", function(req, res) {
-    console.log(req.body);
-    db.Site.create(req.body).then(function(dbSite) {
-      res.redirect(307, "/");
-    }).catch(function(err) {
-      res.json(err);
-    });
+// app.post("/api/sites", function(req, res) {
+//     console.log(req.body);
+//     db.Site.create(req.body.url).then(function(dbSite) {
+//       res.redirect(307, "/");
+//     }).catch(function(err) {
+//       res.json(err);
+//     });
+//   });
+
+  app.post("/api/sites", function(req, res) {
+    console.log(req.user.id);
+    
+    db.Site.create({
+      url: req.body.url,
+      category: "test",
+      description: "test",
+      rating: 4,
+      UserId: req.user.id
+    })
   });
 
-app.delete("/api/posts/:id", function(req, res) {
+app.delete("/api/sites/:id", function(req, res) {
   db.Site.destroy({
     where: {
       id: req.params.id
@@ -25,7 +37,7 @@ app.delete("/api/posts/:id", function(req, res) {
     });
   });
 
-app.get("/api/posts/:id", function(req, res) {
+app.get("/api/sites/:id", function(req, res) {
   db.Site.findAll({
     where: {
       id: req.params.id
@@ -36,7 +48,7 @@ app.get("/api/posts/:id", function(req, res) {
   });
 });
 
-app.get("/api/posts/:category", function(req, res) {
+app.get("/api/sites/:category", function(req, res) {
   db.Site.findAll({
     where: {
       category: req.params.category
@@ -46,7 +58,7 @@ app.get("/api/posts/:category", function(req, res) {
   });
 });
 
-app.get("/api/posts/:rating", function(req, res) {
+app.get("/api/sites/:rating", function(req, res) {
   db.Site.findAll({
     where: {
       rating: req.params.rating

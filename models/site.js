@@ -10,16 +10,16 @@ module.exports = function(sequelize, DataTypes) {
         },
         category: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             default: "misc"
         },
         description: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
         },
         rating: {
             type: DataTypes.INTEGER,
-            allowNull: false,
+            allowNull: true,
             default: 5
         },
     });

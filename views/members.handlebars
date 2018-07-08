@@ -11,14 +11,13 @@
 <div id="sites" class="jumbotron">
     <h1 id="sitesTitle" class="display-4">Sites</h1>
     <p class="lead"></p>
-    {{!-- {{#each}} --}}
+    {{!-- {{#each dbSite}} --}}
     <ul class="list-group">
-  <li class="list-group-item"><a href="http://getbootstrap.com" target="_blank">bootstrap</a> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove-circle pull-right"></span></button></li>
-  <li class="list-group-item"><a href="http://w3schools.com" target="_blank">w3schools</a> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove-circle pull-right"></span></button></li>
-  <li class="list-group-item"><a href="http://github.com" target="_blank">github</a> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove-circle pull-right"></span></button></li>
-  <li class="list-group-item"><a href="http://lipsum.com" target="_blank">lipsum</a> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove-circle pull-right"></span></button></li>
-  <li class="list-group-item"><a href="http://fonts.google.com" target="_blank">google fonts</a> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove-circle pull-right"></span></button></li>
-</ul>
+  {{!-- <li class="list-group-item"><a href="http://google.com" target="_blank"></a> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove-circle pull-right"></span></button></li> --}}
+  {{!-- <li class="list-group-item"> --}}
+    <span class="site-container"></span>
+    {{!-- </li> --}}
+  </ul>
 {{!-- {{/each}} --}}
 {{!-- <div class="col-md-12 text-center" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
   <div class="btn-group mr-2" role="group" aria-label="First group">
@@ -56,11 +55,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <h5 id="modalTitle" class="modal-title" id="exampleModalLabel">Add a Site</h5>
-        <form id="inputSite" action="/action_page.php">
-  Website Title: <input id="inputSiteBox1" type="text" name="title"><br>
-  Website URL: <input id="inputSiteBox2" type="text" name="url"><br>
+        <form id="inputSite">
+  {{!-- Website Title: <input id="inputSiteBox1" type="text" name="title"><br> --}}
+  Website URL: <input class="new-item form-control" id="inputSiteBox2" type="text" name="url"><br>
   {{!-- <input type="submit" value="Submit"> --}}
-</form> 
+ 
         {{!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button> --}}
@@ -70,8 +69,9 @@
       </div> --}}
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-        <button type="button" class="btn btn-primary">Add Site</button>
+        <button id="addUrl" type="submit" class="btn btn-primary">Add Site</button>
       </div>
+      </form>
     </div>
   </div>
 </div>
