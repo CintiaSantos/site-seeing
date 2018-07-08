@@ -5,6 +5,18 @@ getSites();
 
 var $newItemInput = $("input.new-item");
 $(document).on("submit", "#inputSite", insertSite);
+$(document).on("click", "button.close", deleteSite);
+$(document).on("click", "button.close", myFunction);
+$(document).on("click", "button.addUrl", myFunction);
+
+function deleteSite(event) {
+  event.stopPropagation();
+  var id = $(this).data("id");
+  $.ajax({
+    method: "DELETE",
+    url: "/api/sites/" + id
+  }).then(getSites);
+}
 
 function insertSite(event) {
     event.preventDefault();
@@ -17,12 +29,9 @@ function insertSite(event) {
     $newItemInput.val("");
   }
 
-//   $('#addUrl').submit(function(e) {
-//     e.preventDefault();
-//     // Coding
-//     $('#exampleModal').modal('hide'); //or  $('#IDModal').modal('hide');
-//     return false;
-// });
+  function myFunction() {
+    location.reload();
+}
 
 var $siteContainer = $(".site-container");
 
@@ -47,17 +56,42 @@ function getSites() {
     var $newInputRow = $(
       [
         "<li class='list-group-item'>",
+        "<a href=",
+        "https://",
+        sites.url,
+        " ",
+        "target=",
+        "_blank",
+        ">",
         "<span>",
         sites.url,
         "</span>",
-        "<input type='text' class='edit' style='display: none;'>",
-        "<button class='delete btn btn-danger'>x</button>",
-        "<button class='complete btn btn-primary'>✓</button>",
+        "</a>",
+        "<button type=",
+        "button",
+        " ",
+        "class=",
+        "close",
+        " ",
+        "data-dismiss=",
+        "modal",
+        " ",
+        "aria-label=",
+        "Close",
+        ">",
+        "<span",
+        " ",
+        "class=",
+        "'glyphicon glyphicon-remove-circle pull-right'",
+        ">",
+        "</span>",
+        "</button>",
         "</li>"
       ].join("")
     );
-    
-    $newInputRow.find("button.delete").data("id", sites.id);
+    console.log($newInputRow);
+
+    $newInputRow.find("button.close").data("id", sites.id);
     $newInputRow.find("input.edit").css("display", "none");
     $newInputRow.data("todo", sites);
     if (sites.complete) {

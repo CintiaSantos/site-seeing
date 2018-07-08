@@ -30,8 +30,10 @@ app.delete("/api/sites/:id", function(req, res) {
     where: {
       id: req.params.id
     }
-  }).then(function(dbSite) {
-      res.redirect(307, "/");
+  })
+  .then(function(dbSite) {
+      // res.redirect(307, "/");
+      res.redirect("members");
     }).catch(function(err) {
       res.json(err);
     });
