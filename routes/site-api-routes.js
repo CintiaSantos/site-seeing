@@ -14,7 +14,7 @@ module.exports = function(app) {
 //   });
 
   app.post("/api/sites", function(req, res) {
-    console.log(req.user.id);
+    
     
     db.Site.create({
       url: req.body.url,

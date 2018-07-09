@@ -35,6 +35,14 @@ module.exports = function(app) {
         });
     });
 
-
+    app.get("/api/users/:id", function(req, res) {
+        db.User.findAll({
+          where: {
+            id: req.params.id
+          },
+        }).then(function(dbUser) {
+          res.json(dbUser);
+        });
+      });
 
 };

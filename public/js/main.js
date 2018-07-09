@@ -53,51 +53,92 @@ function getSites() {
   }
 
   function createNewRow(sites) {
-    var $newInputRow = $(
-      [
-        "<li class='list-group-item'>",
-        "<a href=",
-        "https://",
-        sites.url,
-        " ",
-        "target=",
-        "_blank",
-        ">",
-        "<span>",
-        sites.url,
-        "</span>",
-        "</a>",
-        "<button type=",
-        "button",
-        " ",
-        "class=",
-        "close",
-        " ",
-        "data-dismiss=",
-        "modal",
-        " ",
-        "aria-label=",
-        "Close",
-        ">",
-        "<span",
-        " ",
-        "class=",
-        "'glyphicon glyphicon-remove-circle pull-right'",
-        ">",
-        "</span>",
-        "</button>",
-        "</li>"
-      ].join("")
-    );
-    console.log($newInputRow);
 
-    $newInputRow.find("button.close").data("id", sites.id);
-    $newInputRow.find("input.edit").css("display", "none");
-    $newInputRow.data("todo", sites);
-    if (sites.complete) {
-      $newInputRow.find("span").css("text-decoration", "line-through");
+    console.log(sites);
+    
+    $.get("/api/users", function(req, res) {
+      for (i=0; i<req.length; i++) {
+        console.log(req[i].id);
+      }
+      
+  });
+    
+    if (sites.UserId === 2) {
+      var $newInputRow = $(
+        [
+          "<li class='list-group-item'>",
+          "<a href=",
+          "https://",
+          sites.url,
+          " ",
+          "target=",
+          "_blank",
+          ">",
+          "<span>",
+          sites.url,
+          "</span>",
+          "</a>",
+          "<button type=",
+          "button",
+          " ",
+          "class=",
+          "close",
+          " ",
+          "data-dismiss=",
+          "modal",
+          " ",
+          "aria-label=",
+          "Close",
+          ">",
+          "<span",
+          " ",
+          "class=",
+          "'glyphicon glyphicon-remove-circle pull-right'",
+          ">",
+          "</span>",
+          "</button>",
+          "</li>"
+        ].join("")
+      );
+      console.log($newInputRow);
+  
+      $newInputRow.find("button.close").data("id", sites.id);
+      $newInputRow.find("input.edit").css("display", "none");
+      $newInputRow.data("todo", sites);
+      if (sites.complete) {
+        $newInputRow.find("span").css("text-decoration", "line-through");
+      }
+      return $newInputRow;
     }
-    return $newInputRow;
+    else {
+      var $newInputRow = $(
+        [
+          "<li class='list-group-item'>",
+          "<a href=",
+          "https://",
+          sites.url,
+          " ",
+          "target=",
+          "_blank",
+          ">",
+          "<span>",
+          sites.url,
+          "</span>",
+          "</a>",
+          "</li>"
+        ].join("")
+      );
+      console.log($newInputRow);
+  
+      $newInputRow.find("button.close").data("id", sites.id);
+      $newInputRow.find("input.edit").css("display", "none");
+      $newInputRow.data("todo", sites);
+      if (sites.complete) {
+        $newInputRow.find("span").css("text-decoration", "line-through");
+      }
+      return $newInputRow;
+    }
   }
+    
 
 });
