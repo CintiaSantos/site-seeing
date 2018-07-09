@@ -35,6 +35,15 @@ module.exports = function(app) {
         });
     });
 
+    app.get("/api/user", function(req, res) {
+        console.log(req.user.id);
+        // db.User.findAll({
+        //     where: {id: req.body.id},
+        // }).then(function(dbUser) {
+            res.json(req.user.id);
+        // });
+    });
+
     app.get("/api/users/:id", function(req, res) {
         db.User.findAll({
           where: {

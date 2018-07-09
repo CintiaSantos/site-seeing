@@ -1,6 +1,7 @@
 $(document).ready(function() {
 
 var sites = [];
+var currentUser;
 getSites();
 
 var $newItemInput = $("input.new-item");
@@ -36,13 +37,18 @@ function insertSite(event) {
 var $siteContainer = $(".site-container");
 
 function initializeRows() {
+  console.log("initialize")
     $siteContainer.empty();
     var rowsToAdd = [];
     for (var i = 0; i < sites.length; i++) {
-      rowsToAdd.push(createNewRow(sites[i]));
+      rowsToAdd.push(createNewRows(sites[i]));
     }
+    // let rowsToAdd=sites.map(x=>{
+
+    // })
+    console.log(rowsToAdd)
     $siteContainer.prepend(rowsToAdd);
-  }
+}
 
 function getSites() {
     $.get("/api/sites", function(data) {
@@ -52,18 +58,29 @@ function getSites() {
     });
   }
 
-  function createNewRow(sites) {
+  function getCurrentUser(passThis) {
+   $.ajax({url:"/api/user", method:"GET"})
+   .then(
+     function(data){
+    currentUser=data
+    console.log(currentUser, "get request")
+    createNewRows(passThis)
+  })
+  
+}
 
-    console.log(sites);
-    
-    $.get("/api/users", function(req, res) {
-      for (i=0; i<req.length; i++) {
-        console.log(req[i].id);
-      }
-      
-  });
-    
-    if (sites.UserId === 2) {
+  function createNewRows(sites){
+  // getCurrentUser()
+  console.log(currentUser, "global")
+    // .then( function(data){
+      // console.log(typeof(data))
+    // console.log(sites.UserId);
+    // console.log(req);
+
+    if (2 == 2) {
+      console.log("this is running");
+      console.log(sites.UserID);
+      console.log(currentUser);
       var $newInputRow = $(
         [
           "<li class='list-group-item'>",
@@ -128,7 +145,7 @@ function getSites() {
           "</li>"
         ].join("")
       );
-      console.log($newInputRow);
+      // console.log($newInputRow);
   
       $newInputRow.find("button.close").data("id", sites.id);
       $newInputRow.find("input.edit").css("display", "none");
@@ -138,7 +155,7 @@ function getSites() {
       }
       return $newInputRow;
     }
+  
   }
-    
-
+  
 });
