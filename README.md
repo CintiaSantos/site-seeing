@@ -34,10 +34,10 @@ After cloning our app, type this command in the CLI while in your root folder:
 
 ## Authors
 
-* **Daniel ** - *front-end, back-end* - [sumofitsparts](https://github.com/sumofitsparts)
-* **Cintia Santos ** - *front-end, back-end* - [CintiaSantos](https://github.com/CintiaSantos)
-* **Nima Chenari ** - *back-end, server-side* - [nchenari](https://github.com/nchenari)
-* **Marcus Salazar ** - *back-end, server-side, chrome extensions* - [marcpsalazar](https://github.com/marcpsalazar)
+* **Daniel** - *front-end, back-end* - [sumofitsparts](https://github.com/sumofitsparts)
+* **Cintia Santos** - *front-end, back-end* - [CintiaSantos](https://github.com/CintiaSantos)
+* **Nima Chenari** - *back-end, server-side* - [nchenari](https://github.com/nchenari)
+* **Marcus Salazar** - *back-end, server-side, chrome extensions* - [marcpsalazar](https://github.com/marcpsalazar)
 
 See also the list of [contributors](https://github.com/site-seeing/contributors) who participated in this project.
 
