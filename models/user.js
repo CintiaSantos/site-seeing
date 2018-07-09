@@ -8,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         email: {
             type: DataTypes.STRING,
-            allowNull: false,
+            allowNull: true,
             unique: true,
             validate: {
                 isEmail: true
@@ -16,10 +16,10 @@ module.exports = function(sequelize, DataTypes) {
         },
         password: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: true
         }
     });
-    
+
     User.associate = function(models) {
         // Associate User with Sites
         // When a User is deleted, also delete any associated Sites
@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
             onDelete: "cascade"
         });
     };
-    
+
     User.prototype.validPassword = function(password) {
         return bcrypt.compareSync(password, this.password);
     };

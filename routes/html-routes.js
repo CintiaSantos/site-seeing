@@ -10,30 +10,19 @@ var path = require("path");
 // =============================================================
 module.exports = function(app) {
 
-    // Each of the below routes just handles the HTML page that the user gets sent to.
-  
-    // index route loads view.html
-    app.get("/", function(req, res) {
-      
-        
-    });
-  
-    // cms route loads cms.html
-    app.get("/cms", function(req, res) {
-      
 
-    });
-  
-    // blog route loads blog.html
-    app.get("/blog", function(req, res) {
-      
+    app.get('/', function (req, res) {
+      res.render("index");
+    })
 
-    });
-  
-    // authors route loads author-manager.html
-    app.get("/authors", function(req, res) {
-      
+    app.get('/api/members', function (req, res) {
+      // res.send('Hello World')
+      res.render("members");
+    })
 
-    });
-  
+    app.get('/api/signup', function (req, res) {
+      // res.send('Hello World')
+      res.render("signup");
+    })
+
   };

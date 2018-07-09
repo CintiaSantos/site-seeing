@@ -53,20 +53,20 @@ body {
     }
 }
 
-#loginBox {
+/* #loginBox {
     position: relative;
     left: -30%;
-}
+} */
 
-#loginTitle {
+/* #loginTitle {
     position: relative;
     left: -30%;
-}
+} */
 
-#loginSignUp {
+/* #loginSignUp {
     position: relative;
     left: -30%;
-}
+} */
 
 #email-input {
     width: 150%;
