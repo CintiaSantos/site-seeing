@@ -2,8 +2,8 @@ $(document).ready(function() {
 
   var sites = [];
   var currentUser;
+  
   getSites();
-
   getCurrentUser();
 
   var $newItemInput = $("input.new-item");
@@ -12,6 +12,18 @@ $(document).ready(function() {
   $(document).on("click", "button.close", deleteSite);
   $(document).on("click", "button.close", myFunction);
   $(document).on("click", "button.addUrl", myFunction);
+
+  
+  function insertSite(event) {
+    event.preventDefault();
+    var site = {
+      url: $newItemInput.val().trim(),
+    //   complete: false
+    };
+
+    $.post("/api/sites", site);
+    $newItemInput.val("");
+  }
 
   function deleteSite(event) {
     event.stopPropagation();
@@ -22,20 +34,10 @@ $(document).ready(function() {
     }).then(getSites);
   }
 
-  function insertSite(event) {
-      event.preventDefault();
-      var site = {
-        url: $newItemInput.val().trim(),
-      //   complete: false
-      };
-
-      $.post("/api/sites", site);
-      $newItemInput.val("");
-    }
-
-    function myFunction() {
+  function myFunction() {
       location.reload();
   }
+
 
   var $siteContainer = $(".site-container");
 
