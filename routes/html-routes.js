@@ -1,5 +1,7 @@
-var path = require("path");
 var isAuthenticated = require("../config/middleware/isAuthenticated");
+
+// Import the model (site.js) to use its database functions.
+var site = require("../models/site.js");
 
 module.exports = function(app) {
 
@@ -20,8 +22,13 @@ module.exports = function(app) {
   });
 
   app.get("/sitespage", isAuthenticated, function(req, res) {
-
-    res.render("sitespage");
+    site.all(function(data) {
+      var hbsObject = {
+        sites: data
+      };
+      console.log(hbsObject);
+      res.render("sitespage", hbsObject);
+    });
   });
 
 };
