@@ -1,14 +1,19 @@
 <li>
-    
-    {{url}}
-
-    {{description}}
-
-    {{rating}}
-    
-    {{#if id == 1}} 
-    
-
-    {{/if}}
-    
+    <!-- card container for each site -->
+    <div class="card" style="width: 18rem;">
+        <div class="card-header">
+            
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">{{url}}</h5>
+            <p class="card-text">{{description}}</p>
+        
+            <!-- if id matches current user, provide a delte button for site -->
+            {{#if UserId == user.id}}
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span class="glyphicon glyphicon-remove-circle pull-right"></span>
+                </button>
+            {{/if}}
+        </div>
+    </div>
 </li>
