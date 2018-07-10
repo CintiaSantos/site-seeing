@@ -20,7 +20,7 @@ module.exports = function(app) {
       url: req.body.url,
       category: "test",
       description: req.body.description,
-      rating: 4,
+      rating: 0,
       UserId: req.user.id
     })
   });
@@ -71,7 +71,7 @@ app.get("/api/sites/:rating", function(req, res) {
 });
 
 app.get("/api/sites", function(req, res) {
-    db.Site.findAll({})
+    db.Site.findAll({order: [['rating', 'DESC']],})
     .then(function(dbSite) {
         res.json(dbSite);
     });
