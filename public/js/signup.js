@@ -6,6 +6,7 @@ $(document).ready(function() {
   
     signUpForm.on("submit", function(event) {
       event.preventDefault();
+
       var userData = {
         email: emailInput.val().trim(),
         password: passwordInput.val().trim()
@@ -14,7 +15,9 @@ $(document).ready(function() {
       if (!userData.email || !userData.password) {
         return;
       }
+
       signUpUser(userData.email, userData.password);
+
       emailInput.val("");
       passwordInput.val("");
     });
@@ -32,4 +35,5 @@ $(document).ready(function() {
       $("#alert .msg").text(err.responseJSON);
       $("#alert").fadeIn(500);
     }
-  });
+
+});

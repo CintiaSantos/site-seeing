@@ -1,0 +1,47 @@
+<a id="logOut" href="/api/logout">Log Out</a>
+
+<button id="addSiteButton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+  <span class="glyphicon glyphicon-plus"></span><span id="buttonText"> Add a Site</span>
+</button>
+
+<div id="sites" class="jumbotron">
+  <h1 id="sitesTitle" class="display-4">Sites</h1>
+  <p class="lead"></p>
+    {{!-- {{#each dbSite}} --}}
+  
+  <ul class="list-group">
+  {{!-- <li class="list-group-item"><a href="http://google.com" target="_blank"></a> <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span class="glyphicon glyphicon-remove-circle pull-right"></span></button></li> --}}
+  {{!-- <li class="list-group-item"> --}}
+    <span class="site-container"></span>
+    {{!-- </li> --}}
+  </ul>
+{{!-- {{/each}} --}}
+{{!-- <div class="col-md-12 text-center" class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+  <div class="btn-group mr-2" role="group" aria-label="First group">
+    <button type="button" class="btn btn-primary">1</button>
+    <button type="button" class="btn btn-primary">2</button>
+    <button type="button" class="btn btn-primary">3</button>
+    <button type="button" class="btn btn-primary">4</button>
+  </div>
+</div> --}}
+
+</div>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      
+      <div class="modal-header">
+        <h5 id="modalTitle" class="modal-title" id="exampleModalLabel">Add a Site</h5>
+        <form id="inputSite">Website URL: <input class="new-item form-control" id="inputSiteBox2" type="text" name="url"></form>
+        <br>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button id="addUrl" type="submit" class="addUrl btn btn-primary">Add Site</button>
+      </div>
+
+    </div>
+  </div>
+</div>
