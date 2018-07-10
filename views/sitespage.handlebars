@@ -1,21 +1,29 @@
+<!-- logout link -->
 <a id="logOut" href="/api/logout">Log Out</a>
 
+<!-- button to add a site -->
 <button id="addSiteButton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   <span class="glyphicon glyphicon-plus"></span><span id="buttonText"> Add a Site</span>
 </button>
 
+
+
+<!-- jumbotron providing all of the websites stored in the database -->
 <div id="sites" class="jumbotron">
   <h1 id="sitesTitle" class="display-4">Sites</h1>
+
   <p class="lead"></p>
   
   <ul class="list-group">
-
-    <span class="site-container"></span>
-
+    {{#each sites}}
+      {{> sites/site-block }}
+    {{/each}}
   </ul>
 
 </div>
 
+
+<!-- disapearing modal to add new site to database/sites list -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

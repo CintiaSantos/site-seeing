@@ -1,7 +1,7 @@
 var isAuthenticated = require("../config/middleware/isAuthenticated");
 
-// Import the model (site.js) to use its database functions.
-var site = require("../models/site.js");
+// Import the model to use its database functions.
+var db = require("../models/");
 
 module.exports = function(app) {
 
@@ -22,7 +22,7 @@ module.exports = function(app) {
   });
 
   app.get("/sitespage", isAuthenticated, function(req, res) {
-    site.all(function(data) {
+    db.Site.findAll({}).then(function(data) {
       var hbsObject = {
         sites: data
       };
