@@ -19,7 +19,7 @@ module.exports = function(app) {
     db.Site.create({
       url: req.body.url,
       category: "test",
-      description: "test",
+      description: req.body.description,
       rating: 4,
       UserId: req.user.id
     })

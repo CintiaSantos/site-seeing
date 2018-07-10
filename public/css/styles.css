@@ -76,6 +76,11 @@ body {
     width: 150%;
 }
 
+.g-signin2 {
+    position: relative;
+    left: -50px;
+}
+
 #sites {
     position: absolute;
     top: 5%;

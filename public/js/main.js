@@ -1,14 +1,22 @@
 $(document).ready(function() {
 
 var sites = [];
-var currentUser;
+var rowsToAdd = [];
 getSites();
 
 var $newItemInput = $("input.new-item");
+var $newItemInput2 = $("input.new-item2");
 $(document).on("submit", "#inputSite", insertSite);
 $(document).on("click", "button.close", deleteSite);
 $(document).on("click", "button.close", myFunction);
 $(document).on("click", "button.addUrl", myFunction);
+
+function signOut() {
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+    console.log('User signed out.');
+  });
+}
 
 function deleteSite(event) {
   event.stopPropagation();
@@ -22,10 +30,10 @@ function deleteSite(event) {
 function insertSite(event) {
     event.preventDefault();
     var site = {
-      url: $newItemInput.val().trim(),
-    //   complete: false
+      url: $newItemInput.val().trim().replace('www.','').replace('http://','').replace('https://',''),
+      description: $newItemInput2.val().trim()
     };
-
+    console.log(site)
     $.post("/api/sites", site);
     $newItemInput.val("");
   }
@@ -37,17 +45,13 @@ function insertSite(event) {
 var $siteContainer = $(".site-container");
 
 function initializeRows() {
-  console.log("initialize")
-    $siteContainer.empty();
-    var rowsToAdd = [];
-    for (var i = 0; i < sites.length; i++) {
-      rowsToAdd.push(createNewRows(sites[i]));
-    }
-    // let rowsToAdd=sites.map(x=>{
+  console.log("initialize");
+  $siteContainer.empty();
 
-    // })
-    console.log(rowsToAdd)
-    $siteContainer.prepend(rowsToAdd);
+  for (var i = 0; i < sites.length; i++) {
+    // rowsToAdd.push(createNewRows(sites[i]));
+    createNewRows(sites[i],i);
+  }
 }
 
 function getSites() {
@@ -55,44 +59,39 @@ function getSites() {
       sites = data;
       console.log(sites);
       initializeRows();
+      getCurrentUser();
     });
   }
 
-  function getCurrentUser(passThis) {
-   $.ajax({url:"/api/user", method:"GET"})
-   .then(
-     function(data){
-    currentUser=data
-    console.log(currentUser, "get request")
-    createNewRows(passThis)
-  })
-  
-}
+  function getCurrentUser() {
+    return $.ajax({ url: "/api/user", method: "GET" });
+  }
 
-  function createNewRows(sites){
-  // getCurrentUser()
-  console.log(currentUser, "global")
-    // .then( function(data){
+  function createNewRows(sitesArr,i) {
+    getCurrentUser().then(function(currentUserID) {
+      console.log("inside the promise");
+      // console.log(currentUserID);
+      // .then( function(data){
       // console.log(typeof(data))
-    // console.log(sites.UserId);
-    // console.log(req);
+      // console.log(sites.UserId);
+      // console.log(req);
 
-    if (2 == 2) {
-      console.log("this is running");
-      console.log(sites.UserID);
-      console.log(currentUser);
+    if (sitesArr.UserId === currentUserID) {
+      console.log(sitesArr);
+    
       var $newInputRow = $(
         [
-          "<li class='list-group-item'>",
+          "<li class='list-group-item' style='overflow: auto;'>",
+          "<canvas id='myCanvas" +i + "'width='100' height='100' style='border-width:3px; border-style:solid; border-color: blueviolet; float:left; vertical-align: text-top;'></canvas>",
           "<a href=",
           "https://",
-          sites.url,
+          sitesArr.url,
           " ",
           "target=",
           "_blank",
           ">",
           "<span>",
-          sites.url,
+          sitesArr.url,
           "</span>",
           "</a>",
           "<button type=",
@@ -114,48 +113,86 @@ function getSites() {
           ">",
           "</span>",
           "</button>",
+          "<br>",
+          "<span>",
+          sitesArr.description,
+          "</span>",
           "</li>"
         ].join("")
       );
       console.log($newInputRow);
   
-      $newInputRow.find("button.close").data("id", sites.id);
+      $newInputRow.find("button.close").data("id", sitesArr.id);
       $newInputRow.find("input.edit").css("display", "none");
       $newInputRow.data("todo", sites);
       if (sites.complete) {
         $newInputRow.find("span").css("text-decoration", "line-through");
       }
-      return $newInputRow;
+      rowsToAdd.push($newInputRow);
+        console.log(rowsToAdd);
+        $siteContainer.prepend(rowsToAdd);
     }
     else {
       var $newInputRow = $(
         [
           "<li class='list-group-item'>",
+          "<canvas id='myCanvas" +i + "' width='100' height='100' style='border-width:3px; border-style:solid; border-color: blueviolet; float: left; vertical-align: text-top;'></canvas>",
           "<a href=",
           "https://",
-          sites.url,
+          sitesArr.url,
           " ",
           "target=",
           "_blank",
           ">",
           "<span>",
-          sites.url,
+          sitesArr.url,
           "</span>",
           "</a>",
+          "<br>",
+          "<span>",
+          sitesArr.description,
+          "</span>",
           "</li>"
         ].join("")
       );
       // console.log($newInputRow);
   
-      $newInputRow.find("button.close").data("id", sites.id);
+      $newInputRow.find("button.close").data("id", sitesArr.id);
       $newInputRow.find("input.edit").css("display", "none");
       $newInputRow.data("todo", sites);
       if (sites.complete) {
         $newInputRow.find("span").css("text-decoration", "line-through");
       }
-      return $newInputRow;
+      rowsToAdd.push($newInputRow);
+        $siteContainer.prepend(rowsToAdd);
     }
-  
+
+    var canvas = document.getElementById("myCanvas"+i);
+    console.log(canvas);
+    var ctx = canvas.getContext("2d");
+    
+    // Create gradient
+    var grd=ctx.createLinearGradient(0,0,200,0);
+    var value1 = Math.floor((Math.random() * 255) + 0);
+    var value2 = Math.floor((Math.random() * 255) + 0);
+    var value3 = Math.floor((Math.random() * 255) + 0);
+    var value4 = Math.floor((Math.random() * 255) + 0);
+    var value5 = Math.floor((Math.random() * 255) + 0);
+    var value6 = Math.floor((Math.random() * 255) + 0);
+    grd.addColorStop(0,"rgb("+value1+", "+value2+", "+value3+")");
+    grd.addColorStop(1,"rgb("+value4+", "+value5+", "+value6+")");
+    
+    // Fill with gradient
+    ctx.fillStyle=grd;
+    ctx.fillRect(0,0,200,100);
+    
+    var img = sitesArr.url[0];
+    ctx.font = "80px Comic Sans MS";
+    ctx.fillStyle = "white";
+    ctx.fillText(img,22,75);
+
+  });
+
   }
-  
+
 });

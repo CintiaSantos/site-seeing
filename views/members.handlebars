@@ -3,7 +3,7 @@
 </button>
 </div> --}}
 
-<a id="logOut" href="/api/logout">Log Out</a>
+<a id="logOut" href="/api/logout" onclick="signOut();">Log Out</a>
 
 <button id="addSiteButton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"><span class="glyphicon glyphicon-plus"></span><span id="buttonText"> Add a Site</span>
 </button>
@@ -58,6 +58,7 @@
         <form id="inputSite">
   {{!-- Website Title: <input id="inputSiteBox1" type="text" name="title"><br> --}}
   Website URL: <input class="new-item form-control" id="inputSiteBox2" type="text" name="url"><br>
+  Website Description: <input class="new-item2 form-control" id="inputSiteBox3" type="text" name="url"><br>
   {{!-- <input type="submit" value="Submit"> --}}
  
         {{!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close">
