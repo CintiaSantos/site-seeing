@@ -117,6 +117,9 @@ function getSites() {
           "<span>",
           sitesArr.description,
           "</span>",
+          "<button type='button' id='thumb' class='pull-right'>",
+          "<span class='glyphicon glyphicon-thumbs-up pull-right'></span>",
+          "</button>",
           "</li>"
         ].join("")
       );
@@ -135,7 +138,7 @@ function getSites() {
     else {
       var $newInputRow = $(
         [
-          "<li class='list-group-item'>",
+          "<li class='list-group-item' style='overflow: auto;'>",
           "<canvas id='myCanvas" +i + "' width='100' height='100' style='border-width:3px; border-style:solid; border-color: blueviolet; float: left; vertical-align: text-top;'></canvas>",
           "<a href=",
           "https://",
@@ -152,6 +155,9 @@ function getSites() {
           "<span>",
           sitesArr.description,
           "</span>",
+          "<button type='button' id='thumb' class='pull-right'>",
+          "<span class='glyphicon glyphicon-thumbs-up pull-right'></span>",
+          "</button>",
           "</li>"
         ].join("")
       );
