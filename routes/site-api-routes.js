@@ -20,7 +20,7 @@ module.exports = function(app) {
       url: req.body.url,
       category: "test",
       description: req.body.description,
-      rating: 0,
+      rating: 1,
       UserId: req.user.id
     })
   });
