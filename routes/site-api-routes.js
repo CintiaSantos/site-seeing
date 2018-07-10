@@ -77,5 +77,17 @@ app.get("/api/sites", function(req, res) {
     });
 });
 
+app.post("/api/rank/:id", function(req, res) {
+  console.log(req.body);
+  db.Site.update({
+    rating: req.body.rating,
+  }, {
+    where: {
+      id: req.params.id
+    }
+  }).then(function(dbSite) {
+    res.json(dbSite);
+  });
+});
 
 };

@@ -6,6 +6,7 @@ getSites();
 
 var $newItemInput = $("input.new-item");
 var $newItemInput2 = $("input.new-item2");
+$(document).on("click", "button.thumb", thumbsUp);
 $(document).on("submit", "#inputSite", insertSite);
 $(document).on("click", "button.close", deleteSite);
 $(document).on("click", "button.close", myFunction);
@@ -16,6 +17,31 @@ function signOut() {
   auth2.signOut().then(function () {
     console.log('User signed out.');
   });
+}
+
+function thumbsUp(event) {
+console.log(sites);
+//set a id on each element
+// this.attr("id")
+//sites.this.attr(id).rating
+  // event.preventDefault();
+  event.stopPropagation();
+  var id = $(this).data("id");
+  var rating = $(this).data("rating");
+    var rate = {
+      rating: rating +1,
+      id: id
+    };
+    console.log(rate)
+    $.post("/api/rank/" +id, rate);
+    myFunction()
+    // $newItemInput.val("");
+    // $.ajax({
+    //   method: "POST",
+    //   url: "/api/rank/" + id,
+    //   rating: "test"
+    // })
+    // .then(getSites);
 }
 
 function deleteSite(event) {
@@ -117,14 +143,18 @@ function getSites() {
           "<span>",
           sitesArr.description,
           "</span>",
-          "<button type='button' id='thumb' class='pull-right'>",
-          "<span class='glyphicon glyphicon-thumbs-up pull-right'></span>",
+          "<button type='button' id='thumb' class='thumb pull-right'>",
+          "<span class='glyphicon glyphicon-thumbs-up'></span>",
+          " ",
+          sitesArr.rating,
           "</button>",
           "</li>"
         ].join("")
       );
       console.log($newInputRow);
   
+      $newInputRow.find("button.thumb").data("id", sitesArr.id,);
+      $newInputRow.find("button.thumb").data("rating", sitesArr.rating,);
       $newInputRow.find("button.close").data("id", sitesArr.id);
       $newInputRow.find("input.edit").css("display", "none");
       $newInputRow.data("todo", sites);
@@ -155,14 +185,18 @@ function getSites() {
           "<span>",
           sitesArr.description,
           "</span>",
-          "<button type='button' id='thumb' class='pull-right'>",
-          "<span class='glyphicon glyphicon-thumbs-up pull-right'></span>",
+          "<button type='button' id='thumb' class='thumb pull-right'>",
+          "<span class='glyphicon glyphicon-thumbs-up'></span>",
+          " ",
+          sitesArr.rating,
           "</button>",
           "</li>"
         ].join("")
       );
       // console.log($newInputRow);
   
+      $newInputRow.find("button.thumb").data("id", sitesArr.id,);
+      $newInputRow.find("button.thumb").data("rating", sitesArr.rating,);
       $newInputRow.find("button.close").data("id", sitesArr.id);
       $newInputRow.find("input.edit").css("display", "none");
       $newInputRow.data("todo", sites);
