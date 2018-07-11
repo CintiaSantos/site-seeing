@@ -109,6 +109,7 @@ function getSites() {
         [
           "<li class='list-group-item' style='overflow: auto;'>",
           "<canvas id='myCanvas" +i + "'width='100' height='100' style='border-width:3px; border-style:solid; border-color: blueviolet; float:left; vertical-align: text-top;'></canvas>",
+          "&#8194;",
           "<a href=",
           "https://",
           sitesArr.url,
@@ -140,6 +141,7 @@ function getSites() {
           "</span>",
           "</button>",
           "<br>",
+          "&#8194;",
           "<span>",
           sitesArr.description,
           "</span>",
@@ -170,6 +172,7 @@ function getSites() {
         [
           "<li class='list-group-item' style='overflow: auto;'>",
           "<canvas id='myCanvas" +i + "' width='100' height='100' style='border-width:3px; border-style:solid; border-color: blueviolet; float: left; vertical-align: text-top;'></canvas>",
+          "&#8194;",
           "<a href=",
           "https://",
           sitesArr.url,
@@ -182,6 +185,7 @@ function getSites() {
           "</span>",
           "</a>",
           "<br>",
+          "&#8194;",
           "<span>",
           sitesArr.description,
           "</span>",
