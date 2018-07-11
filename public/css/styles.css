@@ -1,7 +1,7 @@
 body {
     width: 100%;
     height: 100%;
-    background-image: url(../img/background.png);
+    background-image: url(../img/background.jpg);
     background-repeat: repeat;
   }
 
@@ -10,6 +10,9 @@ body {
     font-family: 'Galada', cursive;
     font-size: 60px;
     margin: 20px;
+  -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
 
 /* #sitesJumbotron {
@@ -119,6 +122,9 @@ li {
     Position: absolute;
     right: 2%;
     top: 2%;
+    -webkit-text-fill-color: white; /* Will override color (regardless of order) */
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
 }
 
 #modalTitle {
