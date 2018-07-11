@@ -89,6 +89,7 @@ body {
     top: 5%;
     width: 50%;
     left: 25%;
+    animation-duration: 3s;
 }
 
 #addSite {
